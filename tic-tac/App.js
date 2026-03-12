@@ -101,6 +101,6 @@ const styles = StyleSheet.create({
   outerBorder: {
     borderWidth: 3,
     borderColor: 'black',
-    borderRadius: 23,
+    borderRadius: 24,
   }
 });
