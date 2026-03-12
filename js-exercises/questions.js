@@ -45,7 +45,12 @@
  */
 
 function accountGenerator(accountName, initBalance) {
-  // Your implementation here
+	let balance = initBalance;
+	return function(amount){
+	balance += amount;
+	return `You deposited ${amount} to your ${accountName} Account and the current balance is ${balance}.`;
+
+	}
 }
 
 /**
@@ -68,7 +73,19 @@ function accountGenerator(accountName, initBalance) {
  */
 
 function distributeTips(...args) {
-  // Your implementation here
+	let obj = {food: 0, drink: 0};
+	let count = 0
+	for(const v of args){
+
+	if(count % 2 == 0){
+		obj.food += v;
+	}else{
+		obj.drink += v;
+	}
+	count++;
+	}
+
+	return obj;
 }
 
 /**
@@ -99,7 +116,9 @@ function distributeTips(...args) {
  */
 
 function greetingGenerator(defaultGreeting = "Hello") {
-  // Your implementation here
+	return function greetFunc(name, greeting = defaultGreeting){
+		return `${greeting}, ${name}!`;
+	}
 }
 
 /**
@@ -122,7 +141,9 @@ function greetingGenerator(defaultGreeting = "Hello") {
  */
 
 function mergeAndExtract(array1, array2) {
-  // Your implementation here
+	const merged = [...array1, ...array2];
+	const [first, second, ...remaining] = merged;
+	return {first: first, second: second, remaining: remaining};
 }
 
 /**
@@ -152,7 +173,16 @@ function mergeAndExtract(array1, array2) {
  */
 
 function calculateAlternatingHarmonic(n, accumulator = 0, index = 1) {
-  // Your implementation here
+	if(index > n){
+		return accumulator;
+	}
+	let sign = 1
+	if(index % 2 === 0){
+		sign = -1; 
+	}
+	
+	const term = sign * (1 / index);
+	return calculateAlternatingHarmonic(n, accumulator + term, index + 1);
 }
 
 // Export the function for testing
